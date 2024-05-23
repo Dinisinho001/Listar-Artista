@@ -109,7 +109,7 @@ $result = $conn->query("SELECT id, nome, qt_seguidores FROM artista");
 
                     <div>
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h2>Ver Lista</h2>
+                            <h3>Ver Lista</h3>
                         </div>
                         <table id="tabelaArtista">
                             <thead>
@@ -122,20 +122,20 @@ $result = $conn->query("SELECT id, nome, qt_seguidores FROM artista");
                             <tbody>
                                 <?php while ($row = $result->fetch_assoc()) : ?>
                                     <tr>
-                                        <td><?= htmlspecialchars($row["nome"]) ?></td>
-                                        <td><?= htmlspecialchars($row["qt_seguidores"]) ?></td>
+                                        <td><?= $row["nome"] ?></td>
+                                        <td><?= $row["qt_seguidores"] ?></td>
                                         <td>
                                             <!-- Update form within the table row -->
                                             <form method="POST" style="display:inline;">
-                                                <input type="hidden" name="id" value="<?= htmlspecialchars($row["id"]) ?>">
-                                                <input type="text" name="nome" value="<?= htmlspecialchars($row["nome"]) ?>" required>
-                                                <input type="number" name="qt_seguidores" value="<?= htmlspecialchars($row["qt_seguidores"]) ?>" required>
-                                                <button type="submit" name="update">Update</button>
+                                                <input type="hidden" name="id" value="<?= $row["id"] ?>">
+                                                <input type="text" name="nome" value="<?= $row["nome"] ?>" required>
+                                                <input type="number" name="qt_seguidores" value="<?= $row["qt_seguidores"] ?>" required>
+                                                <button type="submit" name="update">Editar</button>
                                             </form>
                                             <!-- Delete form within the table row -->
                                             <form method="POST" style="display:inline;">
-                                                <input type="hidden" name="id" value="<?= htmlspecialchars($row["id"]) ?>">
-                                                <button type="submit" name="delete">Delete</button>
+                                                <input type="hidden" name="id" value="<?= $row["id"] ?>">
+                                                <button type="submit" name="delete">Apagar</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -199,9 +199,5 @@ $result = $conn->query("SELECT id, nome, qt_seguidores FROM artista");
             });
         });
     </script>
-
-
-
 </body>
-
 </html>
